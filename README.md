@@ -1,1 +1,0 @@
-# New FastAPI + Supabase Project
