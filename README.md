@@ -1,1 +1,1 @@
-# New FastAPI + Supabase Version
+# New FastAPI + Supabase Project
