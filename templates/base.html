@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <title>{% block title %}{% endblock %}</title>
+
+    <style>
+      .akatsuki_title_glow {
+        text-shadow: 0 0 5px #ff4b5c, 0 0 20px #b41232;
+      }
+      .akatsuki_title,
+      .navbar_title,
+      .akatsuki_subtitle,
+      .akatsuki_child_title,
+      .akatsuki-btn,
+      .akatsuki_kanji,
+      .akatsuki_logo,
+      .discord_glow,
+      .discord_btn_font,
+      .discord_navbar,
+      .akatsuki_p_font {
+        font-family: "Orbitron", sans-serif;
+      }
+      .akatsuki_title {
+        font-weight: 900;
+        letter-spacing: 0.2em;
+        color: white;
+      }
+      .navbar_title {
+        font-weight: 900;
+        letter-spacing: 0.1em;
+        color: white;
+      }
+      .akatsuki_subtitle {
+        color: #df3154;
+        font-size: 1.3rem;
+        font-weight: 400;
+        letter-spacing: 0.2em;
+      }
+      .akatsuki_subtitle_glow {
+        text-shadow: 0 0 5px #b41232, 0 0 6px #dc143c, 0 0 7px #ff4b5c;
+      }
+      .akatsuki_child_title {
+        color: #ffff;
+        font-weight: 900;
+        font-size: 40px;
+        letter-spacing: 0.001em;
+      }
+      .akatsuki_child_title_glow {
+        text-shadow: 0 0 5px #ff4b5c, 0 0 20px #b41232;
+      }
+      .akatsuki-btn {
+        background-color: #e63946;
+        color: white;
+        padding: 0.75rem 1.5rem;
+        border-radius: 0.5rem;
+        transition: 0.3s ease;
+      }
+      .akatsuki-btn:hover {
+        background-color: #d62828;
+      }
+      .akatsuki_kanji {
+        font-weight: 900;
+        font-size: 1.5rem;
+        color: #e63946;
+        text-shadow: 0 0 10px #e63946;
+      }
+      .akatsuki_logo {
+        font-weight: 900;
+        letter-spacing: 0.001em;
+        font-size: 1.5rem;
+        color: #ffffff;
+      }
+      .akatsuki_logo_glow {
+        text-shadow: 0 0 10px #b41232;
+      }
+      .discord_glow {
+        font-weight: 500;
+        letter-spacing: 0.1rem;
+        font-size: 1.1rem;
+        text-shadow: 0 0 2px #0f1c3f, 0 0 6px #1043b2, 0 0 10px #2563eb,
+          0 0 14px #3b82f6, 0 0 20px #60a5fa;
+      }
+      .discord-btn {
+        transition: all 0.3s ease;
+      }
+      .discord-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 60px rgba(37, 99, 235, 0.4);
+      }
+      .discord_btn_font {
+        font-weight: 900;
+        letter-spacing: 0.1rem;
+        font-size: 1.1rem;
+        color: white;
+      }
+      .discord_navbar {
+        font-weight: 900;
+        letter-spacing: 0.1rem;
+        color: #ffffff;
+      }
+      .cloud-symbol {
+        font-size: 4rem;
+        color: #dc143c;
+        text-shadow: 0 0 20px rgba(220, 20, 60, 0.6);
+        animation: float 3s ease-in-out infinite;
+      }
+      .akatsuki_p_font {
+        font-weight: 400;
+        letter-spacing: 0.05rem;
+        color: #d1d5db;
+        font-size: 1.1rem;
+      }
+      @keyframes float {
+        0%,
+        100% {
+          transform: translateY(0px);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      body {
+        font-family: "Orbitron", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+
+    <!-- Tailwind Safelist Dummy -->
+    <div class="hidden">
+      bg-red-50 border-red-200 text-red-700 shadow-red-500/10
+      bg-green-800 border-green-900 text-white shadow-green-500/10
+    </div>
+
+    <nav class="border-b-4 border-red-600">
+      <div class="container mx-auto px-4">
+        <div class="flex items-center justify-between h-16">
+          <a href="/">
+            <span class="akatsuki_kanji">雲</span>
+            <span class="akatsuki_logo akatsuki_logo_glow">AKATSUKI</span>
+          </a>
+          <button
+            class="md:hidden p-2 rounded-md hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500"
+            onclick="toggleMobileMenu()"
+          >
+            <i class="fas fa-bars"></i>
+          </button>
+          <div class="hidden md:flex space-x-4">
+            {% if current_user.is_authenticated %}
+            <a
+              href="/"
+              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              >HOME</a
+            >
+            <a
+              href="/auth/logout"
+              class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+              >LOGOUT</a
+            >
+            {% else %}
+            <a
+              href="/auth/login"
+              class="discord_glow text-white inline-flex items-center"
+            >
+              <i class="fab fa-discord mr-2"></i>LOGIN WITH DISCORD
+            </a>
+            {% endif %}
+          </div>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden pb-4">
+          {% if current_user.is_authenticated %}
+          <a
+            href="/"
+            class="block text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >Home</a>
+          <a
+            href="/auth/logout"
+            class="block text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+            >Logout</a>
+          {% else %}
+          <a href="/auth/login" class="discord_glow discord_navbar">
+            <i class="fab fa-discord mr-2"></i>LOGIN WITH DISCORD
+          </a>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+      <div class="container mx-auto px-4 mt-4">
+        {% for category, message in messages %}
+        <div
+          role="alert"
+          class="relative mb-4 px-4 py-3 rounded-lg border {% if category == 'error' %}bg-red-50 border-red-200 text-red-700 shadow-lg shadow-red-500/10{% else %}bg-green-800 border-green-900 text-white shadow-lg shadow-green-500/60{% endif %}"
+        >
+          {{ message }}
+          <button
+            type="button"
+            class="absolute top-0 right-0 mt-3 mr-4 text-xl leading-none font-semibold opacity-50 hover:opacity-75"
+            onclick="this.parentElement.style.display='none'"
+          >
+            ×
+          </button>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="m-0 p-0">{% block content %}{% endblock %}</div>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        menu.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>
